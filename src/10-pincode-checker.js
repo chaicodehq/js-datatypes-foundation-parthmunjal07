@@ -59,10 +59,27 @@
  */
 export function getDataType(value) {
   // Your code here
+  if (value == null) {
+    return "null"
+  } 
+  else if (value == []) {
+    return "array"
+  } else {
+    return typeof(value)
+  }
 }
 
 export function isValidParcelWeight(weight) {
   // Your code here
+  if (weight > 0) {
+    return true
+  }
+  else if (weight === Infinity) {
+    return false
+  }
+  else {
+    return false
+  }
 }
 
 export function isWholeNumber(value) {

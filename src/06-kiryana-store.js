@@ -52,20 +52,47 @@
  */
 export function getItemNames(items) {
   // Your code here
+  if (!Array.isArray(items)) return [];
+  if (items.length == 0) return [];
+  const names = items.map((obj) => obj.name)
+  return names
 }
 
 export function getAffordableItems(items, maxPrice) {
   // Your code here
+  if (!Array.isArray(items) || typeof(maxPrice) !== "number") return [];
+  if (items.length == 0) return [];
+  const cheap = items.filter((obj) => obj.price <= maxPrice)
+  return cheap
 }
 
 export function calculateTotal(items) {
   // Your code here
+  if (!Array.isArray(items)) return 0;
+  if (items.length == 0) return 0;
+  if (ascending) {}
+  const total = items.reduce((acc,obj) => acc + obj.price * obj.qty ,0)
+  return total
 }
 
 export function sortByPrice(items, ascending) {
   // Your code here
+  if (!Array.isArray(items)) return [];
+  if (items.length === 0) return [];
+  if (ascending) {
+    const newItems = [...items].sort((a,b) => a.price - b.price)
+    return newItems
+  } else {
+    const newItems = [...items].sort((a,b) => b.price - a.price)
+    return newItems
+  }
 }
 
 export function formatBill(items) {
   // Your code here
+  if (!Array.isArray(items)) return "";
+  if (items.length === 0) return "";
+  const bill = items.map((obj) => `${obj.name} x ${obj.qty} = Rs.${obj.price * obj.qty}`)
+  const ans = bill.join("\n")
+  return ans
 }

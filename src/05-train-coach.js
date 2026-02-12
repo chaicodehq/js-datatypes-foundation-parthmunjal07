@@ -49,20 +49,38 @@
  */
 export function findPassenger(passengers, name) {
   // Your code here
+  if (!Array.isArray(passengers)) return undefined;
+  if (typeof(name) !== "string") return undefined;
+  const found = passengers.find((obj) => obj.name.toLowerCase() == name.toLowerCase())
+  return found
 }
 
 export function getPassengerIndex(passengers, name) {
-  // Your code here
+  // Your code 
+  if (!Array.isArray(passengers)) return -1;
+  if (typeof(name) !== "string") return -1;
+  const found = passengers.findIndex((obj) => obj.name.toLowerCase() == name.toLowerCase())
+  return found
 }
 
 export function isAnyWaitlisted(passengers) {
   // Your code here
+  if (!Array.isArray(passengers)) return false;
+  const wait = passengers.some((obj) => obj.status == "waitlisted")
+  return wait
 }
 
 export function areAllConfirmed(passengers) {
   // Your code here
+  if (!Array.isArray(passengers)) return false;
+  if (passengers.length == 0) return false;
+  const conf = passengers.every((obj) => obj.status == "confirmed")
+  return conf
 }
 
 export function getWaitlistedPassengers(passengers) {
   // Your code here
+  if (!Array.isArray(passengers)) return [];
+  const conf = passengers.filter((obj) => obj.status == "waitlisted")
+  return conf
 }
