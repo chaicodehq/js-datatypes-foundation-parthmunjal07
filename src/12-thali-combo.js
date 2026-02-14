@@ -54,6 +54,9 @@
  */
 export function createThaliDescription(thali) {
   // Your code here
+  if (typeof(thali) !== "object") return 
+  let ans = `${thali.name.toUpperCase()} (${thali.isVeg ? "Veg": "Non-Neg"}) - Items : ${thali.items.join(',')} - Rs.${thali.price.toFixed(2)}`
+  return ans
 }
 
 export function getThaliStats(thalis) {
@@ -62,6 +65,8 @@ export function getThaliStats(thalis) {
 
 export function searchThaliMenu(thalis, query) {
   // Your code here
+  if (!Array.isArray(thalis) || typeof(query) !== "string") return []
+  
 }
 
 export function generateThaliReceipt(customerName, thalis) {

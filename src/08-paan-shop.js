@@ -68,11 +68,14 @@ export function updatePrices(menu, increase) {
   if (typeof(increase) !== "number" ) return {}
   const temp1 = Object.entries(menu)
   const temp2 = temp1.map(([k, v]) => {
-    return [k+increase, v+increase]
+    return [k, v+increase]
   })
   return Object.fromEntries(temp2)
 }
 
 export function mergeDailySpecials(regularMenu, specialsMenu) {
   // Your code here
+  if (typeof(regularMenu) !== "object" || regularMenu === null) regularMenu = {}
+  if (typeof(specialsMenu) !== "object" || specialsMenu === null) specialsMenu = {}
+  return {...regularMenu, ...specialsMenu}
 }
